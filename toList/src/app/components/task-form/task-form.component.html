@@ -1,0 +1,72 @@
+<div class="d-flex justify-content-center mt-4">
+    <!--                            variável form que recebe um ngFrm (consigo pegar o status do formulario) -->
+    <form (ngSubmit)="submitTask(form)" #form="ngForm" >
+
+        <div class="d-flex">
+            <div class="me-3">
+                <label for="titulo" class="d-block">Título</label>
+                <input 
+                id="titulo" type="text" name="titulo" 
+                [(ngModel)] = "newTask.title" 
+                class="h-25 py-3 rounded-2 border-1 ps-2" 
+                #tituloVar = "ngModel"
+                required
+                minlength="3">
+                
+                <!-- o ponto de interrogação é pq o objeto nao foi criado ainda -->
+                <!-- <div *ngIf="!form.controls['titulo']?.valid && form.controls['titulo']?.touched" >
+                    <p class="mb-0 text-danger">Campo inválido</p>
+                </div> -->
+                <div *ngIf="!form.controls['titulo']?.valid && tituloVar?.touched">
+                    <p class="mb-0 text-danger">Nome obrigatório</p>
+                </div>
+                <!-- <div *ngIf="!tituloVar?.valid && tituloVar?.touched" >
+                    <p class="mb-0 text-danger">Nome muito curto</p>
+                </div> -->
+            </div>
+            
+            <div>
+                <label for="status" class="d-block">Status</label>
+                <select name="status" id="status" name="status" [(ngModel)]="newTask.status" class=" py-1 rounded-2 border-1 ps-2" required>
+                    <option disabled selected>Selecione uma opção</option>
+                    <option value="toDO" >toDo</option>
+                    <option value="doing" >Doing</option>
+                    <option value="done" >Done</option>
+                </select>
+                <div *ngIf="!form.controls['status']?.valid && form.controls['status']?.touched">
+                    <p class="mb-0 text-danger">Escolha uma opção</p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <label for="description" class="d-block">Descrição</label>
+            <!-- <input id="description" type="text" name="description" [(ngModel)] = "newTask.description"> -->
+            <div><textarea  style="resize: none" class="w-100 rounded-2 border-1 ps-2 py-2" name="description" id="description" [(ngModel)] = "newTask.description" required #descriptionVar="ngModel"></textarea></div>
+            <!-- Criando uma veriável para o campo -->
+            <div *ngIf="!descriptionVar?.valid && descriptionVar?.touched">
+                <p class="mb-0 text-danger">Descrição obrigatória</p>
+            </div>
+        </div>
+        <div class="d-flex align-items-center mt-2">
+            <label for="date" class="me-2 w-50">Data de entrega da tarefa:</label>
+            <input id="date" type="date" name="date" 
+            [(ngModel)] = "newTask.date" 
+            class="rounded-2 border-1 py-2 ps-2 w-50"
+            required
+            pattern="^\d{4}-\d{2}-\d{2}$">           
+        </div>
+        <div *ngIf="form.controls['date']?.invalid && form.controls['date']?.touched">
+            <p class="text-end mb-0 text-danger">Selecione uma data</p>
+        </div>
+            
+        <div class="text-end mt-4">
+            <button type="submit" class="btn btn-primary" >Adicionar Tarefa</button>
+            
+            <!-- AQUI O BOTÃO FICA DESATIVADO SE O FORMULARIO NAO ESTIVER VÁLIDO -->
+            <!-- <button type="submit" [disabled]="!form.valid" class="btn btn-primary" >Adicionar Tarefa</button> -->
+            
+            <!-- AQUI É SEM USAR O SUBMIT -->
+            <!-- <button type="button" (click)="submitTask()" class="btn btn-primary" >Adicionar Tarefa</button> -->
+        </div>
+    </form>
+</div>

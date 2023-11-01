@@ -1,0 +1,56 @@
+
+
+<div>    
+    <div class="container d-grid">
+        <div class="row">
+            <div *ngFor="let titulo of ['toDO', 'doing', 'done']" class="col">
+                <h3 class="bg-dark text-warning text-center mb-3">{{titulo}}</h3>
+                <ng-container *ngFor="let task of tasks">
+                    <div *ngIf="task.status == titulo" class="rounded-1 border border-2 p-2 mb-3" (click)="selectedTask(task)">
+                        <h5 class="mb-0">{{task.title}}</h5>
+                        <h5 class="mb-0">{{task.valor | currencyFormat: 'BRL'}}</h5>
+                        <p class="my-0"  appDateWarning [task] = "task">Data de entrega: {{task.date | date:'dd/MM'}}</p>
+                        <div class="d-flex">
+                            <p *ngFor="let tag of task.tags" class="me-3 bg-warning text-white">{{tag}}</p>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    
+    <!-- onChangeFilter é a variavel q eu dei OUTPUT no meu filter.ts -->
+    
+    <!-- <app-task-filter (onChangeFilter)="handleFilter($event)"></app-task-filter>
+    <div *ngFor="let task of tasksFiltradas"   [ngClass]="{'d-none': task.title === 'teste'}">
+        <div appDateWarning [task] = task (click)="selectedTask(task)">
+            {{task.title}} -  -->
+
+            <!-- {{task.title | currencyFormat: 'BRL' }} -  -->
+            <!-- BRL USD  -->
+
+            <!-- {{task.description | slice: 0:4 }} - 
+            {{task.date | date:'dd/MM/yy'}} -
+            {{task.status}}  -->
+            
+            <!--  COMO FAZER UM IF  -->
+            <!-- <div *ngIf="task.title !== 'teste'">
+                {{task.title}} - {{task.description}} - {{task.date}}
+            </div> -->
+        <!-- </div>
+    </div>
+
+    <div>
+        <p></p>
+    </div> -->
+
+</div>
+
+<!--   (evento) = "função()""        -->
+
+<!-- <button (click)="teste()">Mostrar Console</button> -->

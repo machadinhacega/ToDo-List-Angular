@@ -1,0 +1,11 @@
+<div class="position-fixed start-0 top-0 end-0 bottom-0">
+    <div class="position-relative d-flex justify-content-center mt-5">
+        <div class="bg-body p-3 border border-2 rounded-2 mt-5 px-4 w-25">
+            <h3 class="fw-medium">{{task?.title}}</h3>
+            <p> Descrição: {{task?.description}}</p>
+            <p> Data vencimento: {{task?.date | date: 'dd/MM/yy' }}</p>
+        
+            <button (click)="closeDetailContainer()" class="btn btn-dark">Fechar</button>
+        </div>
+    </div>
+</div>

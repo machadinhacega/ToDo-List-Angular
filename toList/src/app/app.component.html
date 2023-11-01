@@ -1,0 +1,54 @@
+<div class="text-center mb-4">
+    <h1 class="py-2 bg-dark fw-bold text-white">TO<span class="text-warning">DO</span><span class="fw-light">LIST</span></h1>
+</div>
+
+<!-- GET criado no app.ts  -> Se a gente quiser usar essa logica em varias partes do codigo, podemos só usar um get para nao repetir o codigo -->
+<!-- <div *ngFor="let item of toDoStatus">{{item.title}}</div> -->
+
+<h1 class="text-center">Form Reactive</h1>
+<app-task-form-reactive (addTask)="onAddTask($event)"></app-task-form-reactive>
+
+<h1 class="text-center mt-5">Form driven</h1>
+<app-task-form (addTask)="onAddTask($event)"></app-task-form>
+
+
+<div *ngIf="selectedTask">
+    <!--                                  no task-details.ts  | no app.ts   -->
+    <!--                                                      | nao precisa reeber o event pq nao vai fzer nada com ele  -->
+        <app-task-details  [task]="selectedTask " (closeDetail) = "fecharDetalhes()"></app-task-details> <!-- Ebvua a selectedTask -->
+    </div>
+
+
+   
+
+
+<div>
+    <div class="text-center d-flex align-content-center justify-content-center mt-4">
+        <h2 class="bg-warning w-100 mx-5 mb-4 fw-bold py-2">Painel de Tarefas</h2>
+    </div>
+    <div class="text-center">
+        <button (click)="mostrarLista()" class="btn btn-dark  fw-medium mb-3">Ocultar lista</button>
+    </div>
+</div>
+<div *ngIf = "isVisible">
+    <!-- handleTask esta no task.list.ts            | handleTaskApp esta no app.ts          -->
+    <app-task-list  [tasks]="listTask" (handleTask)="handleTaskApp($event)"></app-task-list>
+</div>
+
+
+<!-- (editTask)="onEditTask($event)" -->
+<app-task-form-reactive 
+[task]="taskEdit"
+></app-task-form-reactive>
+
+
+
+<app-task-table [listTaskToTable]="listTaskToTable" ></app-task-table>
+
+
+
+
+<!-- <h4 appBgRed [numero] = "10">DIRETIVAS - bg red</h4>
+<h4 appBgRed [numero] = diretiveNumber>DIRETIVAS - Número vindo do app component</h4> -->
+
+

@@ -1,0 +1,21 @@
+<div class="d-grid">
+    <div class="">
+        <h3 class="fw-bold">Tabela de Log</h3>
+        <table class="table w-25">
+            <thead>
+                <tr>
+                    <th>Titulo</th>
+                    <th>Descrição</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let task of listTaskToTable">
+                    <td>{{task.title}}</td>
+                    <td>{{task.description}}</td>
+                    <td>{{task.date | date: 'dd/MM/yyyy'}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

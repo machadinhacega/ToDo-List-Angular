@@ -1,0 +1,11 @@
+
+<div>
+    <label for="filterTask" class="fw-bold">Pesquisar por status</label>
+    <select name="filterTask" id="filterTask" class="d-block mt-1 mb-3" [(ngModel)]="filter" (change)="selectFilter()" >
+        <option value="all">Mostrar tudo</option>
+        <option value="toDO">ToDo</option>
+        <option value="doing">Doing</option>
+        <option value="done">Done</option>
+    </select>
+</div>
+
