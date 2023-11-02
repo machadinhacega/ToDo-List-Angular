@@ -1,11 +1,11 @@
 # ToDo List com Angular
 
+![Screenshot](screenshot.png)
+
 Essa aplicação foi resultado do módulo Angular 1, visto no programa Santander Coders 2023, uma parceria Ada e Santander. Ela serviu para aplicar os conceitos estudados nesse primeiro contato com o framework.
 
 ## Sobre
 Este é um aplicativo de lista de tarefas simples construído com Angular. Ele permite que os usuários criem, tarefas de maneira eficaz.
-
-![Screenshot](screenshot.png)
 
 ## Recursos
 
